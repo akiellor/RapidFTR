@@ -29,7 +29,7 @@ Feature: Disable and enable forms
     And I am on the form section page
 
     Then I should see the text "Hidden" in the enabled column for the form section "caregiver_details"
-    And the "caregiver_details" section should not have sort order
+    And the "caregiver_details" section should not have order controls
 
     When I check "sections_caregiver_details"
     And I press "Show"

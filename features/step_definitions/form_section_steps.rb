@@ -77,6 +77,8 @@ Then /^I should see "([^\"]*)" with order of "([^\"]*)"$/ do |form_name, form_or
   order.should == form_order
 end
 
-Then /^the "([^\"]*)" section should not have sort order$/ do |unique_id|
+Then /^the "([^\"]*)" section should not have order controls$/ do |unique_id|
   response_body.should_not have_selector "##{unique_id}_row .formSectionOrder"
+  response_body.should_not have_selector "##{unique_id}_up"
+  response_body.should_not have_selector "##{unique_id}_down"
 end
