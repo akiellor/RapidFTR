@@ -81,7 +81,7 @@ class FormSection < CouchRestRails::Document
     formsection.enabled = to_state
     formsection.save
   end
-  
+
   def add_text_field field_name
     self["fields"] << Field.new_text_field(field_name)
   end
@@ -142,7 +142,11 @@ class FormSection < CouchRestRails::Document
   def all_text_fields
     self.fields.select {|field| field.type == Field::TEXT_FIELD || field.type == Field::TEXT_AREA }
   end 
-  
+
+  def orderable?
+    enabled? && !perm_enabled?
+  end
+
   protected
 
   def validate_unique_name

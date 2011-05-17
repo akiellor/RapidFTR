@@ -333,4 +333,33 @@ describe FormSection do
       field_two.should be_enabled
     end
   end
+
+  describe "orderable" do
+    subject { FormSection.new(:enabled => enabled?, :perm_enabled => perm_enabled?) }
+    let(:enabled?) { true }
+    let(:perm_enabled?) { true }
+
+    context "not permanently enabled and enabled" do
+      let(:perm_enabled?) { false }
+
+      it { should be_orderable }
+    end
+
+    context "permanently enabled and enabled" do
+      it { should_not be_orderable }
+    end
+
+    context "permanently enabled and disabled" do
+      let(:enabled?) { false }
+
+      it { should_not be_orderable }
+    end
+
+    context "not permanently enabled and disabled" do
+      let(:enabled?) { false }
+      let(:perm_enabled?) { false }
+
+      it { should_not be_orderable }
+    end
+  end
 end

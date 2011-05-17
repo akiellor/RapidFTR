@@ -32,12 +32,12 @@
           <td>
             <% if section.enabled? %>
             <span class="formSectionOrder"><%= section.order %></span>
-            <% end %>
             <span class="updatedFormSectionOrder">
               <%= hidden_field_tag "form_order[#{section.unique_id}]", section.order %>
             </span>            
+            <% end %>
           </td>
-          <% if section.enabled? %>
+          <% if section.orderable? %>
             <td class="orderingColumn">
               <a id="<%= "#{section.unique_id}_up"%>"  href="#" class="hidden moveUp"><img src="/images/icon-up-arrow.gif"></a>
             </td>
