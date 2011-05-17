@@ -30,7 +30,9 @@
           <td><%= link_to section.name, edit_form_section_path(section.unique_id), :class => "formSectionLink" %></td>
           <td><%= section.description %></td>
           <td>
+            <% if section.enabled? %>
             <span class="formSectionOrder"><%= section.order %></span>
+            <% end %>
             <span class="updatedFormSectionOrder">
               <%= hidden_field_tag "form_order[#{section.unique_id}]", section.order %>
             </span>            

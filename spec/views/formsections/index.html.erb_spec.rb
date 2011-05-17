@@ -27,6 +27,12 @@ def form_section_should_have_order(form_section)
   form_section_order.inner_html.strip.should == form_section.order
 end
 
+def form_section_should_not_have_order(form_section)
+  row = @searchable_response.form_section_row_for form_section.unique_id
+  form_section_order = row.form_section_order
+  form_section_order.should be_nil
+end
+
 def should_have_description(form_section)
   row = @searchable_response.form_section_row_for form_section.unique_id
   cell = row.search("td").detect { |cell| cell.inner_html.strip == @form_section_1.description }
@@ -93,7 +99,7 @@ describe "form_section/index.html.erb" do
   end
   it "renders the current order for each form section" do
     form_section_should_have_order(@form_section_1)
-    form_section_should_have_order(@form_section_2)
+    form_section_should_not_have_order(@form_section_2)
     form_section_should_have_order(@form_section_3)
   end
 end
