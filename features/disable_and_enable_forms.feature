@@ -19,8 +19,8 @@ Feature: Disable and enable forms
     Then the checkbox with id "<checkbox_id>" <has_this_value>
 
   Examples:
-    | name              | order | unique_id         | enabled | checkbox_id                | has_this_value        |
-    | Caregiver details | 2     | caregiver_details | false   | sections_caregiver_details | should not be checked |
+    | checkbox_id                | has_this_value        |
+    | sections_caregiver_details | should not be checked |
 
 
   Scenario Outline: Should enable selected forms
